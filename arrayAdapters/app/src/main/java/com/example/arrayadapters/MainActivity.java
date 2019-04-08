@@ -2,7 +2,10 @@ package com.example.arrayadapters;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,7 +16,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listView = (ListView) findViewById(R.id.list_view);
+        ArrayAdapter arrayAdapter = new ArrayAdapter<String>(this,R.layout.activity_main , getResources().getStringArray(R.array.Android));
+        listView.setAdapter(arrayAdapter);
 
-
+        listView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "You Clicked", Toast.LENGTH_SHORT ).show();
+            }
+        });
     }
 }

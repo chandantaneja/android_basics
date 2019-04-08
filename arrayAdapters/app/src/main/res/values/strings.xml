@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">arrayAdapters</string>
+
+    <string-array name="Android" >
+        <item >alpha</item>
+        <item >beta</item>
+        <item >Cupcake</item>
+        <item >Donut</item>
+        <item >Eclairs</item>
+        <item >Froyo</item>
+        <item >Ginger Bread</item>
+        <item >HoneyComb</item>
+        <item >Ice Cream Sandwich</item>
+        <item >Jelly Bean</item>
+        <item >Kit kat</item>
+        <item >Lollipop</item>
+        <item >Marshmallow</item>
+        <item >Nougat</item>
+        <item >oreo</item>
+        <item >Pie</item>
+        </string-array>
 </resources>
