@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SQLiteBasics</string>
+    <string name="btn_login">log In</string>
+    <string name="btn_signup">Sign Up</string>
+    <string name="ed_user">Username</string>
+    <string name="ed_pass">Password</string>
+    <string name="cnf_pass">Confirm Password</string>
+</resources>
