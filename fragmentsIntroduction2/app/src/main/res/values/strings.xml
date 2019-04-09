@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">fragmentsIntroduction</string>
+    <string-array name="AndroiidVersions">
+        <item>Cupcake</item>
+        <item>Donut</item>
+        <item>Eclairs</item>
+        <item>Froyo</item>
+        <item>Gingerbread</item>
+        <item>HoneyComb</item>
+        <item>Ice cream Sandwich</item>
+        <item>Jelly bean</item>
+        <item>Kit kat</item>
+        <item>Lollipop</item>
+        <item>Marshmallow</item>
+        <item>Nougat</item>
+        <item>Oreo</item>
+        <item>Pie</item>
+
+    </string-array>
+</resources>
