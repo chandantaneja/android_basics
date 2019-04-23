@@ -1,7 +1,14 @@
 package com.example.bluetoothchatapp;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +18,10 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private Context context;
+    // used to find, turn on/off bluetooth device
+
     private BluetoothAdapter bluetoothAdapter;
+    private final int LOCATION_PERMISSION_REQUEST = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +66,50 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void enableBluetooth()
-    {
+    private void checkPermissions(){
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager
+                                                        .PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_PERMISSION_REQUEST );
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == LOCATION_PERMISSION_REQUEST){
+            if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED ) {
+
+         }
+         else
+         {
+         new AlertDialog.Builder(context).setCancelable(false).setMessage("Location Permission is Requires \n Please Grant")
+         .setPositiveButton("Grant", new DialogInterface.OnClickListener() {
+@Override
+public void onClick(DialogInterface dialog, int which) {
+        checkPermissions();
+        }
+        })
+        .setNegativeButton("DENY", new DialogInterface.OnClickListener() {
+@Override
+public void onClick(DialogInterface dialog, int which) {
+        MainActivity.this.finish();
+        }
+        }).create();
+        }
+        }else {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        }
+
+private void enableBluetooth()
+        {
         if (bluetoothAdapter.isEnabled()) {
-            Toast.makeText(context, "Bluetooth Enabled", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Bluetooth Enabled", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            bluetoothAdapter.enable();
+        bluetoothAdapter.enable();
         }
 
-    }
-}
+        }
+        }
